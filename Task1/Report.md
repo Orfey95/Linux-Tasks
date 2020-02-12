@@ -1,4 +1,45 @@
 1) Найти все системные группы и получить только их уникальные имена и id. Сохранить в файл. 
+```
+vagrant@task1:~$ cat /etc/group | egrep "x:(0?[1-9]|[1-9][0-9]):" > out.txt
+vagrant@task1:~$ cat out.txt
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:ubuntu
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:ubuntu
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:ubuntu
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:ubuntu
+sasl:x:45:
+plugdev:x:46:ubuntu
+staff:x:50:
+games:x:60:
+
+```
 2) Найти все файлы и директории, который имеют права для доступа соответствующих user и group. 
 3) Найти все скрипты в указанной директории и ее поддиректориях. 
 4) Выполнить поиск файлов скриптов из под определенного пользователя.
