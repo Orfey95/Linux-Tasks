@@ -65,7 +65,6 @@ vagrant@task1:~$ sudo find / -user vagrant -name "*.sh"
 /home/vagrant/scripts/script2.sh
 /home/vagrant/scripts/sub_scripts/script3.sh
 /home/vagrant/scripts/script1.sh
-
 ```
 5) Выполнить рекурсивный поиск слов или фразы для определенного типа файлов. 
 6) Найти дубликаты файлов в заданных каталогах. Вначале сравнивать по размеру, затем по варианту (выбрать хешь функцию: CRC32, MD5, SHA-1, sha224sum). Результат должен быть отсортирован по имени файла. 
