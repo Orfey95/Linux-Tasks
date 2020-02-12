@@ -73,6 +73,11 @@ vagrant@task1:~$ sudo find / -user vagrant -name "*.sh"
 ```
 vagrant@task1:~$ touch file
 vagrant@task1:~$ ln -s file file_soft_link
+vagrant@task1:~$ ls -li
+total 2
+ 60377 -rw-rw-r-- 2 vagrant vagrant    0 Feb 12 15:56 file
+ 60380 lrwxrwxrwx 1 vagrant vagrant    4 Feb 12 15:57 file_sl -> file
+
 ```
 ```
 vagrant@task1:~$ find -lname file
@@ -83,6 +88,11 @@ vagrant@task1:~$ find -lname file
 ```
 vagrant@task1:~$ touch file
 vagrant@task1:~$ ln file file_hard_link
+vagrant@task1:~$ ls -li
+total 2
+ 60377 -rw-rw-r-- 2 vagrant vagrant    0 Feb 12 15:56 file
+ 60377 -rw-rw-r-- 2 vagrant vagrant    0 Feb 12 15:56 file_hl
+
 ```
 ```
 vagrant@task1:~$ find -samefile file
