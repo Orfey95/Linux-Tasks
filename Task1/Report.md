@@ -165,23 +165,41 @@ vagrant@task1:~/links$ find -mount -inum 278585
 12) Рекурсивно изменить права доступа к файлам (задана маска файла) в заданной директории. 
 <br>**Environment:**
 ```
-./rights:
+sasha1@task1:~$ ll -Rl rights
+rights:
 total 12
-drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 11:31 ./
-drwxr-xr-x 6 sasha1 sasha1 4096 Feb 13 11:31 ../
--rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file1
--rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file2
-drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 11:31 sub_rights/
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ./
+drwxr-xr-x 6 sasha1 sasha1 4096 Feb 13 12:23 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:24 file1
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:24 file2
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:27 log
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 12:24 sub_rights/
 
-./rights/sub_rights:
+rights/sub_rights:
 total 8
-drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 11:31 ./
-drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 11:31 ../
--rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file3
--rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file4
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 12:24 ./
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:24 file3
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:24 file4
 ```
 ```
+sasha1@task1:~$ find -name file* -exec chmod +x {} \;
+sasha1@task1:~$ ll -Rl rights
+rights:
+total 12
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ./
+drwxr-xr-x 6 sasha1 sasha1 4096 Feb 13 12:23 ../
+-rwxrwxr-x 1 sasha1 sasha1    0 Feb 13 12:24 file1*
+-rwxrwxr-x 1 sasha1 sasha1    0 Feb 13 12:24 file2*
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:27 log
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 12:24 sub_rights/
 
+rights/sub_rights:
+total 8
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 12:24 ./
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ../
+-rwxrwxr-x 1 sasha1 sasha1    0 Feb 13 12:24 file3*
+-rwxrwxr-x 1 sasha1 sasha1    0 Feb 13 12:24 file4*
 ```
 13) \*Сравнить рекурсивно две директории и отобразить только отличающиеся файлы. * (вывести до 2 строки и после 3 строки относительно строки в которой найдено отличие). 
 14) Получить MAC-адреса сетевых интерфейсов.
