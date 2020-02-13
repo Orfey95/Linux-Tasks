@@ -86,6 +86,21 @@ vagrant@task1:~$ sudo find / -user vagrant -name "*.sh"
 ```
 5) Выполнить рекурсивный поиск слов или фразы для определенного типа файлов. 
 6) Найти дубликаты файлов в заданных каталогах. Вначале сравнивать по размеру, затем по варианту (выбрать хешь функцию: CRC32, MD5, SHA-1, sha224sum). Результат должен быть отсортирован по имени файла. 
+<br>**Environment:**
+```
+vagrant@task1:~/duplicate$ cat file1 file2
+Hello World!
+Hello World!
+```
+```
+vagrant@task1:~/duplicate$ ls -l --block-size=M
+total 1M
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 13 08:52 file1
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 13 08:52 file2
+vagrant@task1:~/duplicate$ find . ! -empty -type f -exec sha1sum {} +
+a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b  ./file1
+a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b  ./file2
+```
 7) Найти по имени файла и его пути все символьные ссылки на него. 
 <br>**Environment:**
 ```
