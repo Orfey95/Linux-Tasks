@@ -307,16 +307,17 @@ sasha1@task1:~/archives$ uncompress file.Z
 tar
 ```
 sasha1@task1:~/archives$ tar -cvf tar.tar dir1 dir2
-sasha1@task1:~/archives$ tar -xf tar.tar dir2
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar dir2
 ```
 gz
 ```
 sasha1@task1:~/archives$ gzip tar.tar
-sasha1@task1:~/archives$ tar -xf tar.tar.gz dir2
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.gz dir1
 ```
 bz2
 ```
-
+sasha1@task1:~/archives$ bzip2 tar.tar
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.bz2 dir1
 ```
 25) Рекурсивно скопировать структуру каталогов из указанной директории. (без файлов). 
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
