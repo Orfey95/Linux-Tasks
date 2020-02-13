@@ -163,6 +163,26 @@ vagrant@task1:~/links$ find -mount -inum 278585
 ```
 11) Корректно удалить файл с учетом возможности существования символьных или жестких ссылок.
 12) Рекурсивно изменить права доступа к файлам (задана маска файла) в заданной директории. 
+<br>**Environment:**
+```
+./rights:
+total 12
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 11:31 ./
+drwxr-xr-x 6 sasha1 sasha1 4096 Feb 13 11:31 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file1
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file2
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 11:31 sub_rights/
+
+./rights/sub_rights:
+total 8
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 11:31 ./
+drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 11:31 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file3
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 11:31 file4
+```
+```
+
+```
 13) \*Сравнить рекурсивно две директории и отобразить только отличающиеся файлы. * (вывести до 2 строки и после 3 строки относительно строки в которой найдено отличие). 
 14) Получить MAC-адреса сетевых интерфейсов.
 ```
