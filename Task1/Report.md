@@ -235,6 +235,26 @@ sasha1@task1:~$ netstat -ant  | tail -n +3 | cut -c69- | sort | uniq -c | sort -
       1 ESTABLISHED
 ```
 17) Переназначить существующую символьную ссылку.
+<br>**Environment:**
+```
+sasha1@task1:~/links$ ll
+total 8
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:36 ./
+drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:35 file1
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:35 file2
+lrwxrwxrwx 1 sasha1 sasha1    5 Feb 13 13:36 soft_link -> file1
+```
+```
+sasha1@task1:~/links$ ln -sf file2 soft_link
+sasha1@task1:~/links$ ll
+total 8
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:37 ./
+drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:35 file1
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:35 file2
+lrwxrwxrwx 1 sasha1 sasha1    5 Feb 13 13:37 soft_link -> file2
+```
 18) Имется список фалов с относительным путем и путем к каталогу в котором должна храниться символьная ссылка на файл. Создать символьные ссылки на эти файлы. 
 19) Скопировать директорию с учетом, что в ней существуют как прямые так относительные символьные ссылки на файлы и директории. Предполагается, что копирование выполняется for backup on a removable storage. (сделать в двух вариантах, без rsync и с rsync). 
 20) Скопировать директорию с учетом, что в ней существуют прямые символьные относительные символьные ссылки. 
