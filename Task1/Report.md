@@ -260,9 +260,50 @@ lrwxrwxrwx 1 sasha1 sasha1    5 Feb 13 13:37 soft_link -> file2
 19) Скопировать директорию с учетом, что в ней существуют как прямые так относительные символьные ссылки на файлы и директории. Предполагается, что копирование выполняется for backup on a removable storage. (сделать в двух вариантах, без rsync и с rsync). 
 20) Скопировать директорию с учетом, что в ней существуют прямые символьные относительные символьные ссылки. 
 21) В директории проекта преобразовать все относительные ссылки в прямые.
+<br>**Environment:**
+```
+sasha1@task1:~/links$ ll
+total 8
+drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:55 ./
+drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
+-rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:55 file
+lrwxrwxrwx 1 sasha1 sasha1    4 Feb 13 13:55 soft_link -> file
+```
+```
+sasha1@task1:~/links$ find -type l -exec bash -c 'ln -f "$(readlink -m "$0")" "$0"' {} \;
+sasha1@task1:~/links$ ll -li
+total 8
+278632 drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:56 ./
+278602 drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
+278633 -rw-rw-r-- 2 sasha1 sasha1    0 Feb 13 13:55 file
+278633 -rw-rw-r-- 2 sasha1 sasha1    0 Feb 13 13:55 soft_link
+```
 22) В директории проекта преобразовать все прямые ссылки в относительные для директории проекта.
 23) В указанной директории найти все сломанные ссылки и удалить их. 
 24) Распаковать из архива tar, gz, bz2, lz, lzma, xz, Z определенный каталог в указанное место. 
+<br>**Environment:**
+```
+sasha1@task1:~/archives$ ll
+total 40
+drwxrwxr-x  2 sasha1 sasha1  4096 Feb 13 14:37 ./
+drwxr-xr-x 10 sasha1 sasha1  4096 Feb 13 14:10 ../
+-rw-rw-r--  1 sasha1 sasha1  6276 Feb 13 14:55 file.Z
+-rw-rw-r--  1 sasha1 sasha1    14 Feb 13 14:23 bzip2.bz2
+-rw-rw-r--  1 sasha1 sasha1    23 Feb 13 14:22 gz.gz
+-rw-rw-r--  1 sasha1 sasha1    36 Feb 13 14:25 lz.lz
+-rw-rw-r--  1 sasha1 sasha1    18 Feb 13 14:26 lzma.lzma
+-rw-rw-r--  1 sasha1 sasha1 10240 Feb 13 14:13 tar.tar
+-rw-rw-r--  1 sasha1 sasha1    32 Feb 13 14:27 xz.xz
+```
+```
+sasha1@task1:~/archives$ tar -xvf tar.tar
+sasha1@task1:~/archives$ gunzip gz.gz
+sasha1@task1:~/archives$ bzip2 -d bzip2.bz2
+sasha1@task1:~/archives$ lzip -d lz.lz
+sasha1@task1:~/archives$ lzma -d lzma.lzma
+sasha1@task1:~/archives$ unxz xz.xz
+sasha1@task1:~/archives$ uncompress file.Z
+```
 25) Рекурсивно скопировать структуру каталогов из указанной директории. (без файлов). 
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
 27) Вывести список всех системных пользователей системы отсортированных по id, в формате: login id. 
@@ -271,10 +312,9 @@ lrwxrwxrwx 1 sasha1 sasha1    5 Feb 13 13:37 soft_link -> file2
 30) Вывести всех пользователей которые (имеют/не имеют) терминала (bash, sh, zsh and etc.) (две команды).
 31) Со страницы из интернета закачать все ссылки, которые на странице. Закачивать параллельно. Использовать curl и wget. Дать рекомендации по использованию. 
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
-33) Имется дериктория, в которой, существуют папки и файлы (*.txt & *.jpeg). Файлы *.txt и *.jpeg однозначно связаны между собой по префиксу имени. Файлы могут находиться в различном месте данной директории. Нужно удалить все *.jpeg для которых не существует файла *.txt.
+33) Имется дериктория, в которой, существуют папки и файлы (\*.txt & \*.jpeg). Файлы \*.txt и \*.jpeg однозначно связаны между собой по префиксу имени. Файлы могут находиться в различном месте данной директории. Нужно удалить все \*.jpeg для которых не существует файла \*.txt.
 34) Find your IP address using the command line.
 35) Получить все ip-адресса из текстового файла.
 36) Найти все активные хосты в: - заданной сети,  - списке IP (hosts-server.txt) используя/не используя nMAP.
 37) Используя результат таска 36. Получить ip поднятых хостов. 
 38) Получить все поддомены из SSL сертификата.
-
