@@ -118,11 +118,9 @@ vagrant@task1:~$ find -inum 60377
 13) Сравнить рекурсивно две директории и отобразить только отличающиеся файлы. * (вывести до 2 строки и после 3 строки относительно строки в которой найдено отличие). 
 14) Получить MAC-адреса сетевых интерфейсов.
 ```
-vagrant@task1:~$ ifconfig | egrep "enp|ether "
-enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        ether 02:57:a3:c3:eb:b7  txqueuelen 1000  (Ethernet)
-enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        ether 08:00:27:99:fc:18  txqueuelen 1000  (Ethernet)
+vagrant@task1:~$ ifconfig | egrep "ether " | cut -b 15-31
+02:57:a3:c3:eb:b7
+08:00:27:99:fc:18
 ```
 15) Вывести список пользователей, авторизованных в системе на текущий момент. 
 ```
