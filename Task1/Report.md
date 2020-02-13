@@ -304,6 +304,20 @@ sasha1@task1:~/archives$ lzma -d lzma.lzma
 sasha1@task1:~/archives$ unxz xz.xz
 sasha1@task1:~/archives$ uncompress file.Z
 ```
+tar
+```
+sasha1@task1:~/archives$ tar -cvf tar.tar dir1 dir2
+sasha1@task1:~/archives$ tar -xf tar.tar dir2
+```
+gz
+```
+sasha1@task1:~/archives$ gzip tar.tar
+sasha1@task1:~/archives$ tar -xf tar.tar.gz dir2
+```
+bz2
+```
+
+```
 25) Рекурсивно скопировать структуру каталогов из указанной директории. (без файлов). 
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
 27) Вывести список всех системных пользователей системы отсортированных по id, в формате: login id. 
