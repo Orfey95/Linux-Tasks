@@ -39,7 +39,25 @@ plugdev:x:46:ubuntu
 staff:x:50:
 games:x:60:
 ```
-2) Найти все файлы и директории, который имеют права для доступа соответствующих user и group. 
+2) Найти все файлы и директории, который имеют права для доступа соответствующих user и group.
+```
+vagrant@task1:~$ find -uid 1000 -gid 1000
+.
+./.ssh
+./.ssh/authorized_keys
+./.bash_logout
+./.gnupg
+./.gnupg/private-keys-v1.d
+./.cache
+./.cache/motd.legal-displayed
+./.profile
+./scripts
+./scripts/script2.sh
+./scripts/sub_scripts
+./scripts/sub_scripts/script3.sh
+./scripts/script1.sh
+./.bashrc
+```
 3) Найти все скрипты в указанной директории и ее поддиректориях.
 <br>**Environment:**
 ```
