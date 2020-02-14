@@ -59,7 +59,7 @@ vagrant@task1:~$ find -uid 1000 -gid 1000
 ./.bashrc
 ```
 3) Найти все скрипты в указанной директории и ее поддиректориях.
-<br>Alt-H1**Environment:**
+<br>**Environment:**
 ```
 vagrant@task1:~$ tree
 .
