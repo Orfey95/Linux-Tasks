@@ -59,7 +59,7 @@ vagrant@task1:~$ find -uid 1000 -gid 1000
 ./.bashrc
 ```
 3) Найти все скрипты в указанной директории и ее поддиректориях.
-<br>**Environment:**
+<br>Alt-H1**Environment:**
 ```
 vagrant@task1:~$ tree
 .
@@ -71,6 +71,7 @@ vagrant@task1:~$ tree
 
 2 directories, 3 files
 ```
+
 ```
 vagrant@task1:~$ find . -name "*.sh"
 ./scripts/script2.sh
