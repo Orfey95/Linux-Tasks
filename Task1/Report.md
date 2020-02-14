@@ -465,6 +465,43 @@ gnats
 ```
 29) Вывести всех пользователей которые не имеют право авторизовываться или не имеют право авторизовываться в системе. (две команды). 
 30) Вывести всех пользователей которые (имеют/не имеют) терминала (bash, sh, zsh and etc.) (две команды).
+```
+sasha1@task1:~$ cat /etc/passwd | cut -d: -f1,7 | tr -s ':' ' ' | grep bash | cut -d' ' -f1
+root
+vagrant
+ubuntu
+sasha1
+sasha1@task1:~$ cat /etc/passwd | cut -d: -f1,7 | tr -s ':' ' ' | grep -v bash  | cut -d' ' -f1
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+uucp
+proxy
+www-data
+backup
+list
+irc
+gnats
+nobody
+systemd-network
+systemd-resolve
+syslog
+messagebus
+_apt
+lxd
+uuidd
+dnsmasq
+landscape
+sshd
+pollinate
+sasha
+```
 31) Со страницы из интернета закачать все ссылки, которые на странице. Закачивать параллельно. Использовать curl и wget. Дать рекомендации по использованию. 
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
 33) Имется дериктория, в которой, существуют папки и файлы (\*.txt & \*.jpeg). Файлы \*.txt и \*.jpeg однозначно связаны между собой по префиксу имени. Файлы могут находиться в различном месте данной директории. Нужно удалить все \*.jpeg для которых не существует файла \*.txt.
