@@ -352,6 +352,40 @@ sasha1@task1:~/archives$ compress tar.tar
 sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.Z dir2
 ```
 25) Рекурсивно скопировать структуру каталогов из указанной директории. (без файлов). 
+<br>**Environment:**
+```
+sasha1@task1:~$ tree dir1 destination
+dir1
+├── dir2
+│   ├── dir3
+│   │   └── file3
+│   └── file2
+└── file1
+destination
+```
+```
+sasha1@task1:~$ rsync -av -f"+ */" -f"- *" "dir1" "destination"
+sending incremental file list
+dir1/
+dir1/dir2/
+dir1/dir2/dir3/
+
+sent 134 bytes  received 28 bytes  324.00 bytes/sec
+total size is 0  speedup is 0.00
+sasha1@task1:~$ tree dir1 destination
+dir1
+├── dir2
+│   ├── dir3
+│   │   └── file3
+│   └── file2
+└── file1
+destination
+└── dir1
+    └── dir2
+        └── dir3
+
+5 directories, 3 files
+```
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
 27) Вывести список всех системных пользователей системы отсортированных по id, в формате: login id. 
 28) Вывести список всех пользователей системы (только имена) отсортированные по id.
