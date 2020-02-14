@@ -162,7 +162,20 @@ vagrant@task1:~/links$ find -mount -inum 278585
 ./file_hard_link
 ```
 11) Корректно удалить файл с учетом возможности существования символьных или жестких ссылок.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<br>**Environment:**
+```
+sasha1@task1:~/links$ ll -li
+total 8
+278632 drwxrwxr-x  2 sasha1 sasha1 4096 Feb 14 08:21 ./
+278602 drwxr-xr-x 11 sasha1 sasha1 4096 Feb 13 15:21 ../
+278633 -rw-rw-r--  2 sasha1 sasha1    0 Feb 13 13:55 file
+278633 -rw-rw-r--  2 sasha1 sasha1    0 Feb 13 13:55 hard_link
+278657 lrwxrwxrwx  1 sasha1 sasha1    4 Feb 14 08:21 soft_link -> file
+```
+```
+sasha1@task1:~/links$ find -lname file -exec unlink {} ';'
+sasha1@task1:~/links$ rm $(find -samefile file)
+```
 12) Рекурсивно изменить права доступа к файлам (задана маска файла) в заданной директории. 
 <br>**Environment:**
 ```
