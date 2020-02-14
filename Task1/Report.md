@@ -387,6 +387,42 @@ destination
 5 directories, 3 files
 ```
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
+```
+sasha1@task1:~$ cat /etc/passwd | cut -d: -f1 | sort
+_apt
+backup
+bin
+daemon
+dnsmasq
+games
+gnats
+irc
+landscape
+list
+lp
+lxd
+mail
+man
+messagebus
+news
+nobody
+pollinate
+proxy
+root
+sasha
+sasha1
+sshd
+sync
+sys
+syslog
+systemd-network
+systemd-resolve
+ubuntu
+uucp
+uuidd
+vagrant
+www-data
+```
 27) Вывести список всех системных пользователей системы отсортированных по id, в формате: login id. 
 28) Вывести список всех пользователей системы (только имена) отсортированные по id.
 29) Вывести всех пользователей которые не имеют право авторизовываться или не имеют право авторизовываться в системе. (две команды). 
