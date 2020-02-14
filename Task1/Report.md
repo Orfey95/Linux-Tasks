@@ -71,7 +71,7 @@ vagrant@task1:~$ tree
 
 2 directories, 3 files
 ```
-
+---
 ```
 vagrant@task1:~$ find . -name "*.sh"
 ./scripts/script2.sh
