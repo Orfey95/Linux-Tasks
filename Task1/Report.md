@@ -319,6 +319,26 @@ bz2
 sasha1@task1:~/archives$ bzip2 tar.tar
 sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.bz2 dir1
 ```
+lz
+```
+sasha1@task1:~/archives$ lzip tar.tar
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.lz dir1
+```
+lzma
+```
+sasha1@task1:~/archives$ lzma tar.tar
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.lzma dir2
+```
+xz
+```
+sasha1@task1:~/archives$ xz tar.tar
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.xz dir2
+```
+Z
+```
+sasha1@task1:~/archives$ compress tar.tar
+sasha1@task1:~/archives$ tar -C /home/sasha1/archives2 -xf tar.tar.Z dir2
+```
 25) Рекурсивно скопировать структуру каталогов из указанной директории. (без файлов). 
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
 27) Вывести список всех системных пользователей системы отсортированных по id, в формате: login id. 
