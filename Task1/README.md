@@ -328,6 +328,12 @@ lrwxrwxrwx 1 vagrant vagrant    4 Feb 15 18:22 good_link -> file
 ```
 ```
 vagrant@task1:~/links$ find . -xtype l -delete
+vagrant@task1:~/links$ ll
+total 8
+drwxrwxr-x 2 vagrant vagrant 4096 Feb 15 18:22 ./
+drwxr-xr-x 6 vagrant vagrant 4096 Feb 15 18:15 ../
+-rw-rw-r-- 1 vagrant vagrant    0 Feb 15 18:22 file
+lrwxrwxrwx 1 vagrant vagrant    4 Feb 15 18:22 good_link -> file
 ```
 ---
 24) Распаковать из архива tar, gz, bz2, lz, lzma, xz, Z определенный каталог в указанное место. 
