@@ -598,6 +598,20 @@ sasha
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
 ---
 33) Имется дериктория, в которой, существуют папки и файлы (\*.txt & \*.jpeg). Файлы \*.txt и \*.jpeg однозначно связаны между собой по префиксу имени. Файлы могут находиться в различном месте данной директории. Нужно удалить все \*.jpeg для которых не существует файла \*.txt.
+<br>**Environment:**
+```
+vagrant@task1:~$ tree txt_jpeg
+txt_jpeg
+├── company_logo.jpeg
+├── no_link.jpeg
+├── sub_dir
+│   └── company_bio.txt
+├── user_bio.txt
+└── user_photo.jpeg
+```
+```
+
+```
 ---
 34) Find your IP address using the command line.
 ```
