@@ -288,6 +288,46 @@ lrwxrwxrwx 1 sasha1 sasha1    5 Feb 13 13:37 soft_link -> file2
 18) Имется список фалов с относительным путем и путем к каталогу в котором должна храниться символьная ссылка на файл. Создать символьные ссылки на эти файлы. 
 ---
 19) Скопировать директорию с учетом, что в ней существуют как прямые так относительные символьные ссылки на файлы и директории. Предполагается, что копирование выполняется for backup on a removable storage. (сделать в двух вариантах, без rsync и с rsync). 
+<br>**Environment:**
+```
+vagrant@task1:~$ tree links2 destination
+links2
+├── file
+└── links
+    ├── link -> ../file
+    └── link2 -> ../file
+destination
+```
+<br> Без rsync
+```
+vagrant@task1:~$ cp -r links2/* destination
+vagrant@task1:~$ tree links2 destination
+links2
+├── file
+└── links
+    ├── link -> ../file
+    └── link2 -> ../file
+destination
+├── file
+└── links
+    ├── link -> ../file
+    └── link2 -> ../file
+```
+<br> C rsync
+```
+vagrant@task1:~$ rsync -r -l links2/* destination
+vagrant@task1:~$ tree links2 destination
+links2
+├── file
+└── links
+    ├── link -> ../file
+    └── link2 -> ../file
+destination
+├── file
+└── links
+    ├── link -> ../file
+    └── link2 -> ../file
+```
 ---
 20) Скопировать директорию с учетом, что в ней существуют прямые символьные относительные символьные ссылки. 
 ---
