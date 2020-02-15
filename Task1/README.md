@@ -314,6 +314,21 @@ total 8
 22) В директории проекта преобразовать все прямые ссылки в относительные для директории проекта.
 ---
 23) В указанной директории найти все сломанные ссылки и удалить их. 
+<br>**Environment:**
+```
+vagrant@task1:~/links$ ll
+total 8
+drwxrwxr-x 2 vagrant vagrant 4096 Feb 15 18:22 ./
+drwxr-xr-x 6 vagrant vagrant 4096 Feb 15 18:15 ../
+lrwxrwxrwx 1 vagrant vagrant   13 Feb 15 18:22 br_link1 -> no_exist_file
+lrwxrwxrwx 1 vagrant vagrant   13 Feb 15 18:22 br_link2 -> no_exist_file
+lrwxrwxrwx 1 vagrant vagrant   13 Feb 15 18:22 br_link3 -> no_exist_file
+-rw-rw-r-- 1 vagrant vagrant    0 Feb 15 18:22 file
+lrwxrwxrwx 1 vagrant vagrant    4 Feb 15 18:22 good_link -> file
+```
+```
+vagrant@task1:~/links$ find . -xtype l -delete
+```
 ---
 24) Распаковать из архива tar, gz, bz2, lz, lzma, xz, Z определенный каталог в указанное место. 
 <br>**Environment:**
