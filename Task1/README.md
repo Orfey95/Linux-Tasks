@@ -704,10 +704,15 @@ vagrant@task1:~$ cat /etc/hosts | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | x
 ```
 Использую nMAP
 ```
-
+vagrant@task1:~$ nmap -sn -oG - -v 192.168.0.0/24 | grep 'Status: Up'
+Host: 192.168.0.101 ()  Status: Up
+Host: 192.168.0.105 ()  Status: Up
 ```
 ```
-
+vagrant@task1:~$ nmap -sn -oG - -v $(cat /etc/hosts | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}") | grep 'Status: Up'
+Host: 127.0.0.1 (localhost)     Status: Up
+Host: 127.0.1.1 (task1) Status: Up
+Host: 127.0.1.1 (task1) Status: Up
 ```
 ---
 37) Используя результат таска 36. Получить ip поднятых хостов. 
