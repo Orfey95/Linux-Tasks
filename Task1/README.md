@@ -552,5 +552,9 @@ sasha
 38) Получить все поддомены из SSL сертификата.
 ```
 vagrant@task1:~$ openssl x509 -text -noout -in /etc/ssl/certs/*.crt | grep -oP '[a-z0-9]+\.[a-z]+\.[a-z]+' | cut -d. -f1
+www
+ocsp
+www
+www
 ```
 ---
