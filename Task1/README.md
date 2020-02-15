@@ -298,7 +298,7 @@ links2
     └── link2 -> ../file
 destination
 ```
-<br> Без rsync
+Без rsync
 ```
 vagrant@task1:~$ cp -r links2/* destination
 vagrant@task1:~$ tree links2 destination
@@ -313,7 +313,7 @@ destination
     ├── link -> ../file
     └── link2 -> ../file
 ```
-<br> C rsync
+C rsync
 ```
 vagrant@task1:~$ rsync -r -l links2/* destination
 vagrant@task1:~$ tree links2 destination
