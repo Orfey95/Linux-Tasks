@@ -552,7 +552,42 @@ irc
 gnats
 ```
 ---
-29) Вывести всех пользователей которые не имеют право авторизовываться или не имеют право авторизовываться в системе. (две команды). 
+29) Вывести всех пользователей которые не имеют право авторизовываться или не имеют право авторизовываться в системе. (две команды).
+```
+vagrant@task1:~$ cat /etc/passwd | cut -d: -f1,7 | tr -s ':' ' ' | grep nologin
+daemon /usr/sbin/nologin
+bin /usr/sbin/nologin
+sys /usr/sbin/nologin
+games /usr/sbin/nologin
+man /usr/sbin/nologin
+lp /usr/sbin/nologin
+mail /usr/sbin/nologin
+news /usr/sbin/nologin
+uucp /usr/sbin/nologin
+proxy /usr/sbin/nologin
+www-data /usr/sbin/nologin
+backup /usr/sbin/nologin
+list /usr/sbin/nologin
+irc /usr/sbin/nologin
+gnats /usr/sbin/nologin
+nobody /usr/sbin/nologin
+systemd-network /usr/sbin/nologin
+systemd-resolve /usr/sbin/nologin
+syslog /usr/sbin/nologin
+messagebus /usr/sbin/nologin
+_apt /usr/sbin/nologin
+uuidd /usr/sbin/nologin
+dnsmasq /usr/sbin/nologin
+landscape /usr/sbin/nologin
+sshd /usr/sbin/nologin
+vagrant@task1:~$ cat /etc/passwd | cut -d: -f1,7 | tr -s ':' ' ' | grep -v nologin
+root /bin/bash
+sync /bin/sync
+lxd /bin/false
+pollinate /bin/false
+vagrant /bin/bash
+ubuntu /bin/bash
+```
 ---
 30) Вывести всех пользователей которые (имеют/не имеют) терминала (bash, sh, zsh and etc.) (две команды).
 ```
