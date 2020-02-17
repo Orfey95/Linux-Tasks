@@ -183,7 +183,7 @@ total 8
 278657 lrwxrwxrwx  1 sasha1 sasha1    4 Feb 14 08:21 soft_link -> file
 ```
 ```
-sasha1@task1:~/links$ rm $(find -samefile file; find -lname file)
+sasha1@task1:~/links$ rm $(find -samefile file && find -lname file)
 ```
 ---
 12) Рекурсивно изменить права доступа к файлам (задана маска файла) в заданной директории. 
