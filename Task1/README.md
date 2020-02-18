@@ -651,7 +651,14 @@ txt_jpeg
 └── user_photo.jpeg
 ```
 ```
-
+vagrant@task1:~/txt_jpeg$ rm -r $(find . -type f -exec basename {} \; | cut -d_ -f1 | sort | uniq -u)*
+vagrant@task1:~$ tree txt_jpeg
+txt_jpeg
+├── company_logo.jpeg
+├── sub_dir
+│   └── company_bio.txt
+├── user_bio.txt
+└── user_photo.jpeg
 ```
 ---
 34) Find your IP address using the command line.
