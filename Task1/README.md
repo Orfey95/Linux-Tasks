@@ -634,6 +634,9 @@ wget -nd -r -P /home/vagrant/links/images -A jpeg,jpg,bmp,gif,png https://davidw
 ```
 ---
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
+```
+vagrant@task1:~$ kill -9 $(find /proc -maxdepth 1 -user vagrant -type d -mmin +60 -exec basename {} \; | tail -n +3)
+```
 ---
 33) Имется дериктория, в которой, существуют папки и файлы (\*.txt & \*.jpeg). Файлы \*.txt и \*.jpeg однозначно связаны между собой по префиксу имени. Файлы могут находиться в различном месте данной директории. Нужно удалить все \*.jpeg для которых не существует файла \*.txt.
 <br>**Environment:**
