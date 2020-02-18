@@ -717,9 +717,7 @@ Host: 127.0.1.1 (task1) Status: Up
 Host: 127.0.1.1 (task1) Status: Up
 ```
 ---
-37) Используя результат таска 36. Получить ip поднятых хостов. 
----
-38) Получить все поддомены из SSL сертификата.
+37) Получить все поддомены из SSL сертификата.
 ```
 vagrant@task1:~$ openssl x509 -text -noout -in /etc/ssl/certs/*.crt | grep -oP '[a-z0-9]+\.[a-z]+\.[a-z]+' | cut -d. -f1
 www
