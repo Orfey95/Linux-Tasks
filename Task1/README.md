@@ -99,18 +99,26 @@ vagrant@task1:~$ find . -name "script*" -name "*.sh"
 6) Найти дубликаты файлов в заданных каталогах. Вначале сравнивать по размеру, затем по варианту (выбрать хешь функцию: CRC32, MD5, SHA-1, sha224sum). Результат должен быть отсортирован по имени файла. 
 <br>**Environment:**
 ```
-vagrant@task1:~/duplicate$ cat file1 file2
-Hello World!
-Hello World!
+vagrant@task1:~/31$ cat file1 file2 file3 file4 file5
+string 1
+string 1
+string 2
+string 3
+string 3
 ```
 ```
-vagrant@task1:~/duplicate$ ls -l --block-size=M
+vagrant@task1:~/31$ ls -l --block-size=M
 total 1M
--rw-rw-r-- 1 vagrant vagrant 1M Feb 13 08:52 file1
--rw-rw-r-- 1 vagrant vagrant 1M Feb 13 08:52 file2
-vagrant@task1:~/duplicate$ find . ! -empty -type f -exec sha1sum {} +
-a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b  ./file1
-a0b65939670bc2c010f4d5d6a0b3e4e4590fb92b  ./file2
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file1
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file2
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file3
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file4
+-rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file5
+vagrant@task1:~/31$ find . ! -empty -type f -exec sha1sum {} + | grep "^$(find . ! -empty -type f -exec sha1sum {} + | cut -d' ' -f1 | sort | uniq -d)" | cut -d' ' -f3
+./file5
+./file1
+./file2
+./file4
 ```
 ---
 7) Найти по имени файла и его пути все символьные ссылки на него. 
@@ -383,7 +391,13 @@ total 0
 279357 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 h_link2
 ```
 ```
-
+vagrant@task1:~/folder$ find ./ -type f -links +1 -printf "%i %p\n" | while read working_inode working_on; do find . -type f -links +1 -printf "%i %p\n" | while read inode file; do if [[ $inode == $working_inode ]]; then ln -vsf "$file" "$working_on"; fi; done; done
+vagrant@task1:~/folder$ ls -li
+total 0
+257153 -rw-rw-r-- 1 vagrant vagrant 0 Feb 19 19:29 file1
+279357 -rw-rw-r-- 1 vagrant vagrant 0 Feb 19 19:29 file2
+279372 lrwxrwxrwx 1 vagrant vagrant 7 Feb 19 20:10 h_link1 -> ./file1
+279371 lrwxrwxrwx 1 vagrant vagrant 7 Feb 19 20:10 h_link2 -> ./file2
 ```
 ---
 23) В указанной директории найти все сломанные ссылки и удалить их. 
