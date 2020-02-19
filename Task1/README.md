@@ -207,7 +207,7 @@ drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ../
 -rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 12:24 file4
 ```
 ```
-sasha1@task1:~$ find -name file* -exec chmod +x {} \;
+sasha1@task1:~$ find -name 'file*' -exec chmod +x {} \;
 sasha1@task1:~$ ll -Rl rights
 rights:
 total 12
