@@ -47,3 +47,48 @@ mkdir task18
 mkdir task18/folder1 task18/folder2
 touch task18/file1 task18/file2 task18/file3
 #Task19
+mkdir task19
+mkdir task19/links
+touch task19/file
+ln -s task19/file task19/links/link1
+ln -s task19/file task19/links/link2
+#Task21
+mkdir task21
+touch task21/file
+ln -s task21/file task21/link
+#Task23
+mkdir task23
+touch task23/file
+ln -s task23/file task23/true_link
+ln -s task23/no_file task23/false_link1
+ln -s task23/no_file task23/false_link2
+ln -s task23/no_file task23/false_link3
+#Task24
+mkdir task24
+mkdir task24/folder1 task24/folder2
+touch task24/folder1/file
+#Task25
+mkdir task25
+mkdir task25/folder1 task25/destination
+mkdir task25/folder1/folder2
+mkdir task25/folder1/folder2/folder3
+touch task25/folder1/file1 task25/folder1/folder2/file2 task25/folder1/folder2/folder3/file3
+#Task33
+mkdir task33
+mkdir task33/sub_dir
+touch task33/company_logo.jpeg task33/no_link.jpeg task33/user_bio.txt task33/user_photo.jpeg task33/sub_dir/company_bio.txt
+#Task35
+mkdir task35
+touch task35/list_of_ip.txt
+echo "
+First ip address: 144.238.220.42
+Second ip address: 151.48.136.207
+Third ip address: 219.13.196.88
+Fourth ip address: 159.112.101.88
+Fifth ip address: 5.103.172.2
+Sixth ip address: 57.70.94.162
+Seventh ip address: 78.15.39.147
+Eighth ip address: 90.123.201.145
+Nineth ip address: 132.190.227.76
+Tenth ip address: 117.58.60.172
+" | tee task35/list_of_ip.txt
