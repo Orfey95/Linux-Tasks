@@ -6,9 +6,12 @@ mkdir task3/sub_dir
 touch task3/script1.sh task3/script2.sh task3/sub_dir/script3.sh
 #Task6
 mkdir task6
-touch task6/file1 task6/file2
-echo "Hello World!" > task6/file1
-echo "Hello World!" > task6/file2
+touch task6/file1 task6/file2 task6/file3 task6/file4 task6/file5
+echo "string 1" > task6/file1
+echo "string 1" > task6/file2
+echo "string 2" > task6/file3
+echo "string 3" > task6/file4
+echo "string 3" > task6/file5
 #Task7
 mkdir task7
 touch task7/file
@@ -56,6 +59,11 @@ ln -s task19/file task19/links/link2
 mkdir task21
 touch task21/file
 ln -s task21/file task21/link
+#Task22
+mkdir task22
+touch task22/file1 task22/file2
+ln task22/file1 task22/h_link1
+ln task22/file2 task22/h_link2
 #Task23
 mkdir task23
 touch task23/file
@@ -73,6 +81,10 @@ mkdir task25/folder1 task25/destination
 mkdir task25/folder1/folder2
 mkdir task25/folder1/folder2/folder3
 touch task25/folder1/file1 task25/folder1/folder2/file2 task25/folder1/folder2/folder3/file3
+#Task31
+mkdir task31
+mkdir task31/wget_links
+mkdir task31/curl_links
 #Task33
 mkdir task33
 mkdir task33/sub_dir
