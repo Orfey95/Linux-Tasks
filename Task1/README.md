@@ -373,6 +373,18 @@ total 8
 ```
 ---
 22) В директории проекта преобразовать все прямые ссылки в относительные для директории проекта.
+<br>**Environment:**
+```
+vagrant@task1:~/folder$ ls -li
+total 0
+257153 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 file1
+279357 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 file2
+257153 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 h_link1
+279357 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 h_link2
+```
+```
+
+```
 ---
 23) В указанной директории найти все сломанные ссылки и удалить их. 
 <br>**Environment:**
@@ -651,7 +663,7 @@ sasha
 ---
 31) Со страницы из интернета закачать все ссылки, которые на странице. Закачивать параллельно. Использовать curl и wget. Дать рекомендации по использованию. 
 ```
-wget -nd -r -P /home/vagrant/links/images -A jpeg,jpg,bmp,gif,png https://davidwalsh.name/scrape-images-wget
+vagrant@task1:~$ wget -nd -r -P /home/vagrant/links/images -A jpeg,jpg,bmp,gif,png https://davidwalsh.name/scrape-images-wget
 ```
 ---
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
