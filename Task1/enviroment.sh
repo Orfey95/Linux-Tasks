@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#Task3
+mkdir task3
+mkdir task3/sub_dir
+touch task3/script1.sh task3/script2.sh task3/sub_dir/script3.sh
+#Task6
+mkdir task6
+touch task6/file1 task6/file2
+echo "Hello World!" > task6/file1
+echo "Hello World!" > task6/file2
+#Task7
+mkdir task7
+touch task7/file
+ln -s task7/file task7/soft_link_file
+#Task8
+mkdir task8
+touch task8/file
+ln task8/file task8/hard_link_file
+#Task9
+mkdir task9
+touch task9/file
+ln task9/file task9/hard_link_file
+#Task10
+mkdir task10
+touch task10/file
+ln task10/file task10/hard_link_file
+#Task11
+mkdir task11
+touch task11/file
+ln task11/file task11/hard_link_file
+ln -s task11/file task11/soft_link_file
+#Task12
+mkdir task12
+mkdir task12/sub_dir
+touch task12/file1 task12/file2 task12/log task12/sub_dir/file3 task12/sub_dir/file4
+#Task13
+mkdir task13
+mkdir task13/folder1 task13/folder2
+touch task13/folder1/file1 task13/folder1/file2 task13/folder1/file3 task13/folder2/file1 task13/folder2/file2
+#Task17
+mkdir task17
+touch task17/file1 task17/file2
+ln -s task17/file1 task17/soft_link
+#Task18
+mkdir task18
+mkdir task18/folder1 task18/folder2
+touch task18/file1 task18/file2 task18/file3
+#Task19
