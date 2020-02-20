@@ -676,8 +676,13 @@ sasha
 ```
 ---
 31) Со страницы из интернета закачать все ссылки, которые на странице. Закачивать параллельно. Использовать curl и wget. Дать рекомендации по использованию. 
+wget
 ```
 vagrant@task1:~$ wget -nd -r -P /home/vagrant/links/images -A jpeg,jpg,bmp,gif,png https://davidwalsh.name/scrape-images-wget
+```
+curl
+```
+vagrant@task1:~/31$ curl https://aws.amazon.com/ | grep -Po "(http|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?" | xargs -n 1 -P 2 -I{} wget {}
 ```
 ---
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
