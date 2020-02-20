@@ -75,7 +75,7 @@ vagrant@task1:~$ tree
 2 directories, 3 files
 ```
 ```
-vagrant@task1:~$ find . -name "*.sh"
+vagrant@task1:~$ find . -type f -executable
 ./scripts/script2.sh
 ./scripts/sub_scripts/script3.sh
 ./scripts/script1.sh
@@ -87,6 +87,9 @@ vagrant@task1:~$ sudo find / -user vagrant -name "*.sh"
 /home/vagrant/scripts/script2.sh
 /home/vagrant/scripts/sub_scripts/script3.sh
 /home/vagrant/scripts/script1.sh
+```
+```
+vagrant@task1:~/task3$ sudo find / -user vagrant -type f -executable
 ```
 ---
 5) Выполнить рекурсивный поиск слов или фразы для определенного типа файлов. 
