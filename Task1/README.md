@@ -682,7 +682,7 @@ vagrant@task1:~$ wget -nd -r -P /home/vagrant/links/images -A jpeg,jpg,bmp,gif,p
 ```
 curl
 ```
-vagrant@task1:~/31$ curl https://aws.amazon.com/ | grep -Po "(http|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?" | xargs -n 1 -P 2 -I{} wget {}
+vagrant@task1:~/31$ curl https://davidwalsh.name/scrape-images-wget | grep -Po "(http|https)://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?" | xargs -n 1 -P 2 -I{} wget {}
 ```
 ---
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
