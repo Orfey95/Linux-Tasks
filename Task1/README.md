@@ -1,7 +1,8 @@
 1) Найти все системные группы и получить только их уникальные имена и id. Сохранить в файл. 
 ```
-sasha1@task1:~$ cat /etc/group | egrep "x:(0?[1-9]|[1-9][0-9]):" | cut -d: -f1,3 > out.txt
+sasha1@task1:~$ cat /etc/group | egrep "x:([0-9]|[1-9][0-9]):" | cut -d: -f1,3 > out.txt
 sasha1@task1:~$ cat out.txt
+root:0
 daemon:1
 bin:2
 sys:3
