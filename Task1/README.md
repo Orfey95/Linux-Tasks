@@ -75,7 +75,7 @@ vagrant@task1:~$ tree
 2 directories, 3 files
 ```
 ```
-vagrant@task1:~$ find . -type f -executable
+vagrant@EPUAKHAW013DT11:~/3$ find . -executable -regex '.*sh\|.*\.py'
 ./scripts/script2.sh
 ./scripts/sub_scripts/script3.sh
 ./scripts/script1.sh
@@ -83,13 +83,10 @@ vagrant@task1:~$ find . -type f -executable
 ---
 4) Выполнить поиск файлов скриптов из под определенного пользователя.
 ```
-vagrant@task1:~$ sudo find / -user vagrant -name "*.sh"
+vagrant@task1:~$ sudo find / -user vagrant -executable -regex '.*sh\|.*\.py'
 /home/vagrant/scripts/script2.sh
 /home/vagrant/scripts/sub_scripts/script3.sh
 /home/vagrant/scripts/script1.sh
-```
-```
-vagrant@task1:~/task3$ sudo find / -user vagrant -type f -executable
 ```
 ---
 5) Выполнить рекурсивный поиск слов или фразы для определенного типа файлов. 
