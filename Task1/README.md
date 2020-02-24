@@ -238,22 +238,22 @@ drwxrwxr-x 3 sasha1 sasha1 4096 Feb 13 12:27 ../
 13) \*Сравнить рекурсивно две директории и отобразить только отличающиеся файлы. * (вывести до 2 строки и после 3 строки относительно строки в которой найдено отличие). 
 <br>**Environment:**
 ```
-sasha1@task1:~$ tree folder1 folder2
-folder1
-├── file1
-├── file2
-└── file3
-folder2
-├── file1
-└── file2
-```
-```
-sasha1@task1:~$ diff -r folder1 folder2
-Only in folder1: file3
+vagrant@task1:~$ tree task13/
+task13/
+├── folder1
+│   ├── file1
+│   ├── file2
+│   ├── file3
+│   └── sub_dir
+│       └── file4
+└── folder2
+    ├── file1
+    └── file2
 ```
 ```
 vagrant@task1:~/task13$ find . -type f -exec basename {} \; | sort | uniq -u
 file3
+file4
 ```
 ---
 14) Получить MAC-адреса сетевых интерфейсов.
