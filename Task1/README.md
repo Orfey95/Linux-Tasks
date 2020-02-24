@@ -251,6 +251,10 @@ folder2
 sasha1@task1:~$ diff -r folder1 folder2
 Only in folder1: file3
 ```
+```
+vagrant@task1:~/task13$ find . -type f -exec basename {} \; | sort | uniq -u
+file3
+```
 ---
 14) Получить MAC-адреса сетевых интерфейсов.
 ```
