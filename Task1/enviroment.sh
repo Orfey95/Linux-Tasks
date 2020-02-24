@@ -41,7 +41,8 @@ touch task12/file1 task12/file2 task12/log task12/sub_dir/file3 task12/sub_dir/f
 #Task13
 mkdir task13
 mkdir task13/folder1 task13/folder2
-touch task13/folder1/file1 task13/folder1/file2 task13/folder1/file3 task13/folder2/file1 task13/folder2/file2
+mkdir task13/folder1/sub_dir
+touch task13/folder1/file1 task13/folder1/file2 task13/folder1/file3 task13/folder2/file1 task13/folder2/file2 task13/folder1/sub_dir/file4
 #Task17
 mkdir task17
 touch task17/file1 task17/file2
