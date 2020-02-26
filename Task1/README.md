@@ -90,11 +90,22 @@ vagrant@task1:~$ sudo find / -user vagrant -executable -regex '.*sh\|.*\.py'
 ```
 ---
 5) Выполнить рекурсивный поиск слов или фразы для определенного типа файлов. 
+<br>**Environment:**
 ```
-vagrant@task1:~$ find . -name "script*" -name "*.sh"
-./scripts/script2.sh
-./scripts/sub_scripts/script3.sh
-./scripts/script1.sh
+vagrant@EPUAKHAW013DT11:~/task3$ tree
+.
+├── script1.sh
+├── script2.sh
+└── sub_dir
+    └── script3.sh
+vagrant@EPUAKHAW013DT11:~/task3$ cat sub_dir/script3.sh script1.sh
+Hello World!
+Hello World!
+```
+```
+vagrant@EPUAKHAW013DT11:~/task3$ find . -name "*.sh" -exec grep -rl Hello {} \;
+./script1.sh
+./sub_dir/script3.sh
 ```
 ---
 6) Найти дубликаты файлов в заданных каталогах. Вначале сравнивать по размеру, затем по варианту (выбрать хешь функцию: CRC32, MD5, SHA-1, sha224sum). Результат должен быть отсортирован по имени файла. 
