@@ -282,9 +282,8 @@ vagrant  pts/0        2020-02-12 14:39 (10.0.2.2)
 ---
 16) Вывести список активных сетевых соединений в виде таблицы: тип состояния соединения и их количество. 
 ```
-vagrant@EPUAKHAW013DT11:~$ ss -a | grep -v "UNCONN" | tail -n +2 | tr -s " " | cut -d' ' -f2 | sort | uniq -c | sort -nr
-     51 ESTAB
-     23 LISTEN
+vagrant@EPUAKHAW013DT11:~$ ss -t | tail -n +2 | tr -s " " | cut -d' ' -f1 | sort | uniq -c
+      1 ESTAB
 ```
 ---
 17) Переназначить существующую символьную ссылку.
