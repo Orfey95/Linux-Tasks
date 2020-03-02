@@ -4,7 +4,7 @@
 mkdir task3
 mkdir task3/sub_dir
 touch task3/script1.sh task3/script2.sh task3/sub_dir/script3.sh
-sudo chmod +x task3/script1.sh task3/script2.sh task3/sub_dir/script3.sh
+chmod +x task3/script1.sh task3/script2.sh task3/sub_dir/script3.sh
 echo "Hello World!" > task3/script1.sh
 echo "Hello World!" > task3/sub_dir/script3.sh
 #Task6
