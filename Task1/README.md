@@ -376,41 +376,50 @@ destination
 21) В директории проекта преобразовать все относительные ссылки в прямые.
 <br>**Environment:**
 ```
-sasha1@task1:~/links$ ll
-total 8
-drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:55 ./
-drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
--rw-rw-r-- 1 sasha1 sasha1    0 Feb 13 13:55 file
-lrwxrwxrwx 1 sasha1 sasha1    4 Feb 13 13:55 soft_link -> file
+vagrant@EPUAKHAW013DT11:~$ cd task21
+vagrant@EPUAKHAW013DT11:~/task21$ tree
+.
+├── file
+└── sub1
+    └── sub2
+        └── s_link -> ../../file
+
+2 directories, 2 files
 ```
 ```
-sasha1@task1:~/links$ find -type l -exec bash -c 'ln -f "$(readlink -m "$0")" "$0"' {} \;
-sasha1@task1:~/links$ ll -li
-total 8
-278632 drwxrwxr-x 2 sasha1 sasha1 4096 Feb 13 13:56 ./
-278602 drwxr-xr-x 9 sasha1 sasha1 4096 Feb 13 13:35 ../
-278633 -rw-rw-r-- 2 sasha1 sasha1    0 Feb 13 13:55 file
-278633 -rw-rw-r-- 2 sasha1 sasha1    0 Feb 13 13:55 soft_link
+vagrant@EPUAKHAW013DT11:~/task21$ find ./ -type l -execdir bash -c 'ln -sfn "$(readlink -f "$0")" "$0"' {} \;
+vagrant@EPUAKHAW013DT11:~/task21$ tree
+.
+├── file
+└── sub1
+    └── sub2
+        └── s_link -> /home/vagrant/task21/file
+
+2 directories, 2 files
 ```
 ---
 22) В директории проекта преобразовать все прямые ссылки в относительные для директории проекта.
 <br>**Environment:**
 ```
-vagrant@task1:~/folder$ ls -li
-total 0
-257153 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 file1
-279357 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 file2
-257153 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 h_link1
-279357 -rw-rw-r-- 2 vagrant vagrant 0 Feb 19 19:29 h_link2
+vagrant@EPUAKHAW013DT11:~/task22$ tree
+.
+├── file
+└── sub1
+    └── sub2
+        └── s_link -> /home/vagrant/task22/file
+
+2 directories, 2 files
 ```
 ```
-vagrant@task1:~/folder$ find ./ -type f -links +1 -printf "%i %p\n" | while read working_inode working_on; do find . -type f -links +1 -printf "%i %p\n" | while read inode file; do if [[ $inode == $working_inode ]]; then ln -vsf "$file" "$working_on"; fi; done; done
-vagrant@task1:~/folder$ ls -li
-total 0
-257153 -rw-rw-r-- 1 vagrant vagrant 0 Feb 19 19:29 file1
-279357 -rw-rw-r-- 1 vagrant vagrant 0 Feb 19 19:29 file2
-279372 lrwxrwxrwx 1 vagrant vagrant 7 Feb 19 20:10 h_link1 -> ./file1
-279371 lrwxrwxrwx 1 vagrant vagrant 7 Feb 19 20:10 h_link2 -> ./file2
+vagrant@EPUAKHAW013DT11:~/task22$ find ./ -type l -exec bash -c 'ln -snf $(realpath --relative-to=$(dirname "$0") $(readlink -f "$0")) "$0"' {} \;
+vagrant@EPUAKHAW013DT11:~/task22$ tree
+.
+├── file
+└── sub1
+    └── sub2
+        └── s_link -> ../../file
+
+2 directories, 2 files
 ```
 ---
 23) В указанной директории найти все сломанные ссылки и удалить их. 
