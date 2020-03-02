@@ -62,12 +62,18 @@ ln -s task19/file task19/links/link2
 #Task21
 mkdir task21
 touch task21/file
+mkdir task21/sub1 
+mkdir task21/sub1/sub2
+cd task21/sub1/sub2
+ln -s ../../file s_link
 ln -s task21/file task21/link
+cd ../../../
 #Task22
 mkdir task22
-touch task22/file1 task22/file2
-ln task22/file1 task22/h_link1
-ln task22/file2 task22/h_link2
+touch task22/file
+mkdir task22/sub1 
+mkdir task22/sub1/sub2
+ln -s $(pwd)/task22/file task22/sub1/sub2/s_link
 #Task23
 mkdir task23
 touch task23/file
