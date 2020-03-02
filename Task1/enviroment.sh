@@ -66,7 +66,6 @@ mkdir task21/sub1
 mkdir task21/sub1/sub2
 cd task21/sub1/sub2
 ln -s ../../file s_link
-ln -s task21/file task21/link
 cd ../../../
 #Task22
 mkdir task22
