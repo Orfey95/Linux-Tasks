@@ -114,3 +114,6 @@ Eighth ip address: 90.123.201.145
 Nineth ip address: 132.190.227.76
 Tenth ip address: 117.58.60.172
 " | tee task35/list_of_ip.txt
+
+# clear
+clear
