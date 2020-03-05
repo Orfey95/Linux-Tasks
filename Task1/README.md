@@ -709,6 +709,11 @@ vagrant@task1:~/31$ curl https://davidwalsh.name/scrape-images-wget | grep -Po "
 ```
 ---
 32) Остановить процессы, которые работают больше 5 дней. Команду ps не использовать. 
+
+Check ps
+```
+vagrant@EPUAKHAW013DT11:~$ ps -wo pid,etime
+```
 ```
 vagrant@task1:~$ kill -9 $(find /proc -maxdepth 1 -user vagrant -type d -mmin +60 -exec basename {} \; | tail -n +3)
 ```
