@@ -818,4 +818,8 @@ ocsp
 www
 www
 ```
+```
+vagrant@EPUAKHAW013DT11:~$ nmap -p 443 --script ssl-cert ya.ru | egrep "DNS:" | tr -s "DNS:" " " | cut -d" " -f5-
+*.yandex.az, *.yandex.tm, *.yandex.com.ua, *.yandex.de, yandex.jobs, *.yandex.net, *.xn--d1acpjx3f.xn--p1ai, *.yandex.com.ge, yandex.fr, *.yandex.fr, yandex.kz, yandex.aero, *.yandex.jobs, *.yandex.ee, yandex.com, yandex.tm, yandex.ru, *.yandex.ru, yandex.lv, *.yandex.lt, yandex.az, yandex.net, yandex.lt, ya.ru, yandex.md, yandex.ua, yandex.com.tr, yandex.co.il, yandex.by, yandex.com.ru, *.yandex.com.am, yandex.com.ua, *.yandex.com, yandex.kg, *.yandex.lv, *.yandex.co.il, yandex.uz, *.ya.ru, *.yandex.org, *.yandex.aero, yandex.com.am, xn--d1acpjx3f.xn--p1ai, *.yandex.uz, *.yandex.md, yandex.ee, *.yandex.com.ru, *.yandex.by, yandex.de, yandex.tj, *.yandex.ua, yandex.com.ge, *.yandex.tj, *.yandex.kz, *.yandex.kg, *.yandex.com.tr, yandex.org
+```
 ---
