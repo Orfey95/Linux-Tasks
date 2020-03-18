@@ -4,7 +4,9 @@ user’s password length 8+ characters;
 
 require password changing every 3 months; 
 
-it is not allowed to repeat 3 last passwords; number up case, low case, number digit and special chars; 
+it is not allowed to repeat 3 last passwords; 
+
+number up case, low case, number digit and special chars; 
 
 ask password changing when the 1st user login; 
 
