@@ -24,7 +24,7 @@ echo "alias iptables='sudo iptables'" | sudo tee -a /home/$username/.bashrc
 ```
 3)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission.
 ```
-# Username of new user
+# Username of user
 username=sasha
 # Give permissions to read file /var/log/syslog to user
 sudo setfacl -m u:$username:r /var/log/syslog
