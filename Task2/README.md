@@ -11,4 +11,5 @@ prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (Red
 4) Отправить email. 
 
 \* временное отключения входа пользователя;
+
 \*\* Заблокировать вход в систему с определенных IP. Отправить email.
