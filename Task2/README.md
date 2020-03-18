@@ -9,13 +9,30 @@
 
 2) Create an user who can execute ‘iptables’ with any command line arguments. Let the user do not type ‘sudo iptables’ every time. 
 ```
-vagrant@EPUAKHAWO13DT11:~$ ./task_2.sh newuser newpassword
+# Username of new user
+username=sasha
+# Password for new user
+password=123
+# Create user
+sudo adduser $username --gecos "" --disabled-password
+# Set password for new user
+echo $username:$password | sudo chpasswd
+# Set NORASSWD for iptables for new user
+echo $username' ALL=NOPASSWD:/sbin/iptables' | sudo EDITOR='tee -a' visudo
+# Crate alias without sudo for iptables for new user
+echo "alias iptables='sudo iptables'" | sudo tee -a /home/$username/.bashrc
 ```
 3)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission.
+
+4) Write a script to automate applying policies from the 2 and 3. 
+Script for task 2:
+```
+vagrant@EPUAKHAWO13DT11:~$ ./task_2.sh newuser newpassword
+```
+Script for task 3:
 ```
 vagrant@EPUAKHAWO13DT11:~$ ./task_3.sh username
 ```
-4) Write a script to automate applying policies from the 1 and 2. 
 5) Отправить email. 
 
 - \* временное отключения входа пользователя;
