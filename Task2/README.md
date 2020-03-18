@@ -9,5 +9,6 @@ prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (Red
 2)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission. 
 3) Write a script to automate applying policies from the 1 and 2. 
 4) Отправить email. 
+
 \* временное отключения входа пользователя;
 \*\* Заблокировать вход в систему с определенных IP. Отправить email.
