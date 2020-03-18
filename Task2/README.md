@@ -23,7 +23,11 @@ echo $username' ALL=NOPASSWD:/sbin/iptables' | sudo EDITOR='tee -a' visudo
 echo "alias iptables='sudo iptables'" | sudo tee -a /home/$username/.bashrc
 ```
 3)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission.
-
+```
+# Username of new user
+username=sasha
+sudo setfacl -m u:$username:r /var/log/syslog
+```
 4) Write a script to automate applying policies from the 2 and 3. 
 Script for task 2:
 ```
