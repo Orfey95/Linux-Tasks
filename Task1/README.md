@@ -1,6 +1,6 @@
 1) Найти все системные группы и получить только их уникальные имена и id. Сохранить в файл. 
 ```
-sasha1@task1:~$ cat /etc/group | egrep "x:([0-9]|[1-9][0-9]):" | cut -d: -f1,3 | tr -s ":" " " > out.txt
+sasha1@task1:~$ cat /etc/group | egrep "x:([0-9]{1,3}):" | cut -d: -f1,3 | tr -s ":" " " > out.txt
 sasha1@task1:~$ cat out.txt
 vagrant@EPUAKHAW013DT11:~$ cat out.txt
 root 0
@@ -40,6 +40,22 @@ sasl 45
 plugdev 46
 staff 50
 games 60
+users 100
+systemd-journal 101
+systemd-network 102
+systemd-resolve 103
+input 104
+crontab 105
+syslog 106
+messagebus 107
+lxd 108
+mlocate 109
+uuidd 110
+ssh 111
+landscape 112
+admin 113
+netdev 114
+vboxsf 115
 ```
 ---
 2) Найти все файлы и директории, который имеют права для доступа соответствующих user и group.
