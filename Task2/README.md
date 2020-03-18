@@ -26,6 +26,7 @@ echo "alias iptables='sudo iptables'" | sudo tee -a /home/$username/.bashrc
 ```
 # Username of new user
 username=sasha
+# Give permissions to read file /var/log/syslog to user
 sudo setfacl -m u:$username:r /var/log/syslog
 ```
 4) Write a script to automate applying policies from the 2 and 3. 
