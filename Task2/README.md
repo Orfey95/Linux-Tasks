@@ -11,7 +11,10 @@
 ```
 vagrant@EPUAKHAWO13DT11:~$ ./task_2.sh newuser newpassword
 ```
-3)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission. 
+3)  Grant access to the user to read file /var/log/syslog (Debian) or /var/log/messages (RedHat) without using SUDO for the permission.
+```
+vagrant@EPUAKHAWO13DT11:~$ ./task_3.sh username
+```
 4) Write a script to automate applying policies from the 1 and 2. 
 5) Отправить email. 
 
