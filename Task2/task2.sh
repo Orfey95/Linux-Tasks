@@ -8,7 +8,7 @@ username=$1
 password=$2
 
 # Install libpam-cracklib for password check
-sudo apt install -y libpam-cracklib
+sudo DEBIAN_FRONTEND=noninteractive apt install -y libpam-cracklib
 
 # Check password
 echo $password | cracklib-check | if grep -q "OK";
