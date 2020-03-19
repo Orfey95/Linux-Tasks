@@ -31,6 +31,15 @@ fi
 ```
 - ask password changing when the 1st user login; <br>
 - deny executing ‘sudo su -’ and ‘sudo -s’; <br>
+```
+if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
+then echo 1
+sudo cat /etc/sudoers > temp_file
+sed -i ':a;N;$!ba;s/Cmnd\salias\sspecification\n/Cmnd alias specification\nCmnd_Alias SU1=\/bin\/su -s\nCmnd_Alias SU2=\/bin\/su -\n/' temp_file
+sed -i "s/sudo   ALL=(ALL:ALL) ALL/sudo   ALL=(ALL:ALL) ALL, \!SU1, \!SU2 /" temp_file;
+cat temp_file | sudo EDITOR='tee' visudo
+fi
+```
 - prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat). 
 ```
 sudo chattr +i /var/log/auth.log
