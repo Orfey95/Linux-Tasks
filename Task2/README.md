@@ -43,6 +43,6 @@ vagrant@EPUAKHAWO13DT11:~$ ./task3.sh username
 
 - \* временное отключения входа пользователя;
 ```
-vagrant@EPUAKHAWO13DT11:~$ ./task5.sh username email
+vagrant@EPUAKHAWO13DT11:~$ ./task5_1.sh username email
 ```
 - \*\* Заблокировать вход в систему с определенных IP. Отправить email.
