@@ -30,6 +30,7 @@ username=sasha
 sudo setfacl -m u:$username:r /var/log/syslog
 ```
 4) Write a script to automate applying policies from the 2 and 3. <br>
+
 Script for task 2:
 ```
 vagrant@EPUAKHAWO13DT11:~$ ./task2.sh newuser newpassword
