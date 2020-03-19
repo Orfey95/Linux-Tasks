@@ -1,4 +1,3 @@
-vagrant@EPUAKHAWO13DT11:~$ cat task_2.sh
 #!/bin/bash
 
 
