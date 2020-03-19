@@ -22,9 +22,21 @@ then sudo sed -i ':a;N;$!ba;s/(the "Primary" block)\n/(the "Primary" block)\npas
 fi
 
 # Set require number up case, low case, number digit and special chars
-sudo apt install -y libpam-cracklib
+sudo DEBIAN_FRONTEND=noninteractive apt install -y libpam-cracklib
 if ! grep -q "password requisite pam_cracklib.so" /etc/pam.d/common-password;
 then echo "password requisite pam_cracklib.so ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1" | sudo tee -a /etc/pam.d/common-password;
 fi
 
 # Set ask password changing when the 1st user login
+
+# Deny executing ‘sudo su -’ and ‘sudo -s’
+if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
+then echo 1
+sudo cat /etc/sudoers > temp_file
+sed -i ':a;N;$!ba;s/Cmnd\salias\sspecification\n/Cmnd alias specification\nCmnd_Alias SU1=\/bin\/su -s\nCmnd_Alias SU2=\/bin\/su -\n/' temp_file
+sed -i "s/sudo   ALL=(ALL:ALL) ALL/sudo   ALL=(ALL:ALL) ALL, \!SU1, \!SU2 /" temp_file;
+cat temp_file | sudo EDITOR='tee' visudo
+fi
+
+# Prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat)
+sudo chattr +i /var/log/auth.log
