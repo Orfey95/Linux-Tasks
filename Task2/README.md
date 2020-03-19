@@ -30,6 +30,9 @@ then echo "password requisite pam_cracklib.so ucredit=-1 lcredit=-1 dcredit=-1 o
 fi
 ```
 - ask password changing when the 1st user login; <br>
+```
+
+```
 - deny executing ‘sudo su -’ and ‘sudo -s’; <br>
 ```
 if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
