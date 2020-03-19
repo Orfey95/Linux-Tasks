@@ -1,5 +1,10 @@
 1) Task was to implement the following policies: <br>
 - user’s password length 8+ characters; <br>
+```
+if ! grep -q "minlen=8" /etc/pam.d/common-password;
+then sudo sed -i 's/pam_unix.so /pam_unix.so minlen=8 /' /etc/pam.d/common-password;
+fi
+```
 - require password changing every 3 months; <br>
 - it is not allowed to repeat 3 last passwords; <br>
 - number up case, low case, number digit and special chars; <br>
