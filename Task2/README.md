@@ -6,8 +6,29 @@ then sudo sed -i 's/pam_unix.so /pam_unix.so minlen=8 /' /etc/pam.d/common-passw
 fi
 ```
 - require password changing every 3 months; <br>
+```
+sudo sed -i 's/PASS_MAX_DAYS\s[0-9]\+/PASS_MAX_DAYS\ 90/' /etc/login.defs
+```
 - it is not allowed to repeat 3 last passwords; <br>
+```
+if ! grep -q "use_authtok" /etc/pam.d/common-password;
+then sudo sed -i 's/pam_unix.so /pam_unix.so use_authtok /' /etc/pam.d/common-password;
+fi
+if ! grep -q "password    required    pam_pwhistory.so  remember=3" /etc/pam.d/common-password;
+# What is :a;N;$!ba;
+# Create a label via :a.
+# Append the current and next line to the pattern space via N.
+# If we are before the last line, branch to the created label $!ba ($! means not to do it on the last line as there should be one final newline).
+then sudo sed -i ':a;N;$!ba;s/(the "Primary" block)\n/(the "Primary" block)\npassword    required    pam_pwhistory.so  remember=3\n/' /etc/pam.d/common-password;
+fi
+```
 - number up case, low case, number digit and special chars; <br>
+```
+sudo apt install -y libpam-cracklib
+if ! grep -q "password requisite pam_cracklib.so" /etc/pam.d/common-password;
+then echo "password requisite pam_cracklib.so ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1" | sudo tee -a /etc/pam.d/common-password;
+fi
+```
 - ask password changing when the 1st user login; <br>
 - deny executing ‘sudo su -’ and ‘sudo -s’; <br>
 - prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat). 
