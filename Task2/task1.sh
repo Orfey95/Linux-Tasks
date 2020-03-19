@@ -33,7 +33,7 @@ fi
 if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
 then echo 1
 sudo cat /etc/sudoers > temp_file
-sed -i ':a;N;$!ba;s/Cmnd\salias\sspecification\n/Cmnd alias specification\nCmnd_Alias SU1=\/bin\/su -\nCmnd_Alias SU2=\/urs\/bin\/sudo -s\n/' temp_file
+sed -i ':a;N;$!ba;s/Cmnd\salias\sspecification\n/Cmnd alias specification\nCmnd_Alias SU1=\/bin\/su -\nCmnd_Alias SU2=\/bin\/bash\n/' temp_file
 sed -i "s/sudo   ALL=(ALL:ALL) ALL/sudo   ALL=(ALL:ALL) ALL, \!SU1, \!SU2 /" temp_file;
 cat temp_file | sudo EDITOR='tee' visudo
 fi
