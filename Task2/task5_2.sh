@@ -13,6 +13,9 @@ ip=$3
 # Disable ssh for specific ip
 echo "sshd : $3" | sudo tee -a /etc/hosts.deny
 
+# Install postfix for emailing
+sudo DEBIAN_FRONTEND=noninteractive apt install -y postfix
+
 # Text of email
 echo "Hello, Dear $username
 
