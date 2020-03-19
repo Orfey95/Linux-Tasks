@@ -32,7 +32,9 @@ fi
 - ask password changing when the 1st user login; <br>
 - deny executing ‘sudo su -’ and ‘sudo -s’; <br>
 - prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat). 
-
+```
+sudo chattr +i /var/log/auth.log
+```
 2) Create an user who can execute ‘iptables’ with any command line arguments. Let the user do not type ‘sudo iptables’ every time. 
 ```
 # Username of new user
