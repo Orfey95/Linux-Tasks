@@ -46,3 +46,6 @@ vagrant@EPUAKHAWO13DT11:~$ ./task3.sh username
 vagrant@EPUAKHAWO13DT11:~$ ./task5_1.sh username email
 ```
 - \*\* Заблокировать вход в систему с определенных IP. Отправить email.
+```
+vagrant@EPUAKHAWO13DT11:~$ ./task5_2.sh username email ip_address
+```
