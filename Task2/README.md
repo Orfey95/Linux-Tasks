@@ -32,16 +32,16 @@ sudo setfacl -m u:$username:r /var/log/syslog
 4) Write a script to automate applying policies from the 2 and 3. 
 Script for task 2:
 ```
-vagrant@EPUAKHAWO13DT11:~$ ./task_2.sh newuser newpassword
+vagrant@EPUAKHAWO13DT11:~$ ./task2.sh newuser newpassword
 ```
 Script for task 3:
 ```
-vagrant@EPUAKHAWO13DT11:~$ ./task_3.sh username
+vagrant@EPUAKHAWO13DT11:~$ ./task3.sh username
 ```
 5) Отправить email. 
 
 - \* временное отключения входа пользователя;
 ```
-vagrant@EPUAKHAWO13DT11:~$ ./task_5.sh username email
+vagrant@EPUAKHAWO13DT11:~$ ./task5.sh username email
 ```
 - \*\* Заблокировать вход в систему с определенных IP. Отправить email.
