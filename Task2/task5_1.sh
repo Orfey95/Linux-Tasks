@@ -10,6 +10,9 @@ email=$2
 # Disable user
 sudo chsh -s /bin/false $username
 
+# Install postfix for emailing
+sudo DEBIAN_FRONTEND=noninteractive apt install -y postfix
+
 # Text of email
 echo "Hello, Dear $username
 
