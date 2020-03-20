@@ -31,7 +31,7 @@ fi
 ```
 - ask password changing when the 1st user login; <br>
 ```
-
+sudo chage -d 0 username
 ```
 - deny executing ‘sudo su -’ and ‘sudo -s’; <br>
 ```
