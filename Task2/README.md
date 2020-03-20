@@ -47,6 +47,9 @@ fi
 ```
 sudo chattr +i /var/log/auth.log
 ```
+```
+sudo chmod +t /var/log/auth.log
+```
 2) Create an user who can execute ‘iptables’ with any command line arguments. Let the user do not type ‘sudo iptables’ every time. 
 ```
 # Username of new user
