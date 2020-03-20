@@ -30,6 +30,7 @@ fi
 # Set ask password changing when the 1st user login
 username=$1
 sudo chage -d 0 $username
+
 # Deny executing ‘sudo su -’ and ‘sudo -s’
 if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
 then echo 1
