@@ -557,6 +557,23 @@ destination
 
 5 directories, 3 files
 ```
+```
+vagrant@task1:~/task25$ find folder1/ -type d -exec bash -c 'mkdir destination/{}' \;
+vagrant@task1:~/task25$ tree
+.
+├── destination
+│   └── folder1
+│       └── folder2
+│           └── folder3
+└── folder1
+    ├── file1
+    └── folder2
+        ├── file2
+        └── folder3
+            └── file3
+
+7 directories, 3 files
+```
 ---
 26) Вывести список всех пользователей системы (только имена) по алфавиту.
 ```
