@@ -41,7 +41,7 @@ cat temp_file | sudo EDITOR='tee' visudo
 fi
 
 # Prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat)
-# Deny remove
+# Not immutable
 sudo chattr +i /var/log/auth.log
-# Ask before remove
+# Remove only owner
 sudo chmod +t /var/log/auth.log
