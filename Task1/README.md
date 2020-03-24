@@ -136,7 +136,7 @@ string 3
 string 3
 ```
 ```
-[vagrant@EPUAKHAWO13DT35 task6]$ find . -type f -exec du -h {} \; | sort -k2,2
+[vagrant@EPUAKHAWO13DT35 task6]$ find . -type f -exec du -h {} \; | sort
 4.0K    ./file1
 4.0K    ./file2
 4.0K    ./file3
