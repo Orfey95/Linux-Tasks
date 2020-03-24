@@ -149,6 +149,13 @@ vagrant@task1:~/31$ find . ! -empty -type f -exec sha1sum {} + | grep "^$(find .
 
 803c85afdbdef4e0907938d549d957f8f7830fb8  ./file1
 803c85afdbdef4e0907938d549d957f8f7830fb8  ./file2
+
+[vagrant@EPUAKHAWO13DT35 task6]$ find . -type f -exec du -h {} \; | sort | find . ! -empty -type f -exec sha1sum {} + | grep "^$(find . ! -empty -type f -exec sha1sum {} + | cut -d' ' -f1 | sort | uniq -d)" | sort | uniq -w32 --all-repeated=separate
+612d726f832ac6e9540339b9792c04abc06dccac  ./file4
+612d726f832ac6e9540339b9792c04abc06dccac  ./file5
+
+803c85afdbdef4e0907938d549d957f8f7830fb8  ./file1
+803c85afdbdef4e0907938d549d957f8f7830fb8  ./file2
 ```
 ---
 7) Найти по имени файла и его пути все символьные ссылки на него. 
