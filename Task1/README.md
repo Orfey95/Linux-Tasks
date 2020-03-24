@@ -136,12 +136,12 @@ string 3
 string 3
 ```
 ```
-[vagrant@EPUAKHAWO13DT35 task6]$ find . -type f -exec du {} \; | sort
-4       ./file1
-4       ./file2
-4       ./file3
-4       ./file4
-4       ./file5
+[vagrant@EPUAKHAWO13DT35 task6]$ find . -type f -exec du -h {} \; | sort -k2,2
+4.0K    ./file1
+4.0K    ./file2
+4.0K    ./file3
+4.0K    ./file4
+4.0K    ./file5
 
 vagrant@task1:~/31$ find . ! -empty -type f -exec sha1sum {} + | grep "^$(find . ! -empty -type f -exec sha1sum {} + | cut -d' ' -f1 | sort | uniq -d)" | sort | uniq -w32 --all-repeated=separate
 612d726f832ac6e9540339b9792c04abc06dccac  ./file4
