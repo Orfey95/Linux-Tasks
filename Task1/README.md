@@ -143,11 +143,11 @@ total 1M
 -rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file3
 -rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file4
 -rw-rw-r-- 1 vagrant vagrant 1M Feb 19 19:51 file5
-vagrant@task1:~/31$ find . ! -empty -type f -exec sha1sum {} + | grep "^$(find . ! -empty -type f -exec sha1sum {} + | cut -d' ' -f1 | sort | uniq -d)" | cut -d' ' -f3
-./file5
+vagrant@task1:~/31$ find . ! -empty -type f -exec sha1sum {} + | grep "^$(find . ! -empty -type f -exec sha1sum {} + | cut -d' ' -f1 | sort | uniq -d)" | cut -d' ' -f3 | sort
 ./file1
 ./file2
 ./file4
+./file5
 ```
 ---
 7) Найти по имени файла и его пути все символьные ссылки на него. 
