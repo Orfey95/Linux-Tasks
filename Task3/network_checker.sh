@@ -17,26 +17,31 @@ else
    exit 0
 fi
 
-# Email report 
-# For Ubuntu 18.04
-if [ "$os" = "Ubuntu" ]; then
-   DEBIAN_FRONTEND=noninteractive apt install -y postfix > /dev/null
-   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
-   rm mail.txt
+emailing(){
+	# Email report 
+	# For Ubuntu 18.04
+	if [ "$os" = "Ubuntu" ]; then
+	   DEBIAN_FRONTEND=noninteractive apt install -y postfix > /dev/null
+	   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
+	   rm mail.txt
+	fi
+	# For Centos 7
+	if [ "$os" = "Centos" ]; then
+	   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
+	   rm mail.txt
 fi
-# For Centos 7
-if [ "$os" = "Centos" ]; then
-   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
-   rm mail.txt
-fi
+}
 
 connection_check_first_try(){
    wget -q --spider google.com
    # If connection true, first try
    if [ $? -eq 0 ]; then
-      exit 0
+      echo "Network TRUE" | tee -a mail.txt
+	  emailing()
+	  exit 0
    # If connection false, first try
    else
+      echo "Network restart" | tee -a mail.txt
       # Network restart
           if [ "$os" = "Ubuntu" ]; then
              netplan apply
@@ -51,11 +56,15 @@ connection_check_second_try(){
    wget -q --spider google.com
    # If connection true, second try
    if [ $? -eq 0 ]; then
+      echo "Network TRUE" | tee -a mail.txt
+	  emailing()
       exit 0
    # If connection false, second try
    else
       # Reboot
       echo "No Connection"
+	  echo "Reboot" | tee -a mail.txt
+	  emailing()
       reboot
    fi
 }
@@ -68,19 +77,29 @@ if [ "$os" = "Ubuntu" ]; then
 elif [ "$os" = "Centos" ]; then
    # Check wget, first try
    if [ "$(yum list installed | grep wget)" = "" ]; then
+      echo "Try install wget" | tee -a mail.txt
       yum install -y wget > /dev/null
    fi
    # Check wget, second try
    if [ "$(yum list installed | grep wget)" = "" ]; then
-      systemctl restart network
+      echo "Problem witch wget installing. Try install wget again" | tee -a mail.txt
+	  systemctl restart network
       sleep 1
       yum install -y wget > /dev/null
    else
-      exit 0
+      echo "Network TRUE" | tee -a mail.txt
+	  emailing()
+	  exit 0
    fi
    # Check wget, third try
    if [ "$(yum list installed | grep wget)" = "" ]; then
-      reboot
+      echo "Reboot" | tee -a mail.txt
+	  emailing()
+	  reboot
+   else
+      echo "Network TRUE" | tee -a mail.txt
+	  emailing()
+	  exit 0
    fi
    connection_check_first_try
    connection_check_second_try
