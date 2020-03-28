@@ -8,4 +8,4 @@ set -x
 script=$(find / -name network_checker.sh)
 
 # Turn off emailing
-sed "s/echo \"Subject:/#echo \"Subject:/" $script
+sed -i "s/echo \"Subject:/#echo \"Subject:/" $script
