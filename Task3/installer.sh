@@ -31,15 +31,11 @@ if [ "$os" = "Centos" ]; then
    fi
 fi
 
-# Download launcher.sh
-wget https://raw.githubusercontent.com/Orfey95/Linux-Tasks/master/Task3/launcher.sh
-
 # Download network_checker.sh
 wget https://raw.githubusercontent.com/Orfey95/Linux-Tasks/master/Task3/network_checker.sh
 
 # Run network_checker.sh
 bash network_checker.sh 2>&1 | tee mail.txt
-sed -i "s!bash!bash $(realpath network_checker.sh)!" launcher.sh
 
 # Email report 
 # For Ubuntu 18.04
