@@ -15,7 +15,7 @@ else
 fi
 
 # Run net_check.sh
-curl https://raw.githubusercontent.com/Orfey95/Linux-Tasks/master/Task3/network_checker.sh | sudo bash 2>&1 | tee mail.txt
+bash 2>&1 | tee mail.txt
 
 
 # Email report 
@@ -30,5 +30,4 @@ if [ "$os" = "Centos" ]; then
    echo "Subject: Logging launcher.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
    rm mail.txt
 fi
-
 
