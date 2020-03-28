@@ -29,7 +29,7 @@ emailing(){
 	if [ "$os" = "Centos" ]; then
 	   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
 	   rm mail.txt
-fi
+    fi
 }
 
 connection_check_first_try(){
@@ -37,7 +37,7 @@ connection_check_first_try(){
    # If connection true, first try
    if [ $? -eq 0 ]; then
       echo "Network TRUE" | tee -a mail.txt
-	  emailing()
+	  emailing
 	  exit 0
    # If connection false, first try
    else
@@ -57,14 +57,14 @@ connection_check_second_try(){
    # If connection true, second try
    if [ $? -eq 0 ]; then
       echo "Network TRUE" | tee -a mail.txt
-	  emailing()
+	  emailing
       exit 0
    # If connection false, second try
    else
       # Reboot
       echo "No Connection"
 	  echo "Reboot" | tee -a mail.txt
-	  emailing()
+	  emailing
       reboot
    fi
 }
@@ -88,17 +88,17 @@ elif [ "$os" = "Centos" ]; then
       yum install -y wget > /dev/null
    else
       echo "Network TRUE" | tee -a mail.txt
-	  emailing()
+	  emailing
 	  exit 0
    fi
    # Check wget, third try
    if [ "$(yum list installed | grep wget)" = "" ]; then
       echo "Reboot" | tee -a mail.txt
-	  emailing()
+	  emailing
 	  reboot
    else
       echo "Network TRUE" | tee -a mail.txt
-	  emailing()
+	  emailing
 	  exit 0
    fi
    connection_check_first_try
