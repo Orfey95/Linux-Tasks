@@ -34,6 +34,15 @@ fi
 # Download network_checker.sh
 wget https://raw.githubusercontent.com/Orfey95/Linux-Tasks/master/Task3/network_checker.sh
 
+# Make the file executable
+script_name=$(realpath network_checker.sh)
+chmod +x $script_name
+
+# Add to cron
+if ! grep -q "$script_name" /etc/crontab; then
+   echo "*/5 * * * * root $script_name > /dev/null 2>&1" >> /etc/crontab
+fi
+
 # Run network_checker.sh
 bash network_checker.sh 2>&1 | tee mail2.txt
 
