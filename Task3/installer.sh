@@ -39,7 +39,7 @@ wget https://raw.githubusercontent.com/Orfey95/Linux-Tasks/master/Task3/network_
 
 # Run network_checker.sh
 bash network_checker.sh 2>&1 | tee mail.txt
-sed -i "s/2/$(echo $(realpath network_checker.sh)) 2/" launcher.sh
+sed -i "s!2!$(echo $(realpath network_checker.sh)) 2!" launcher.sh
 
 # Email report 
 # For Ubuntu 18.04
