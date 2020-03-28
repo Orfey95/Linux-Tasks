@@ -55,10 +55,6 @@ Sat Mar 28 17:30:01 UTC 2020
 Network restart
 Network TRUE
 ```
-Case 3:
-```
-
-```
 # Function TWO - Stop emailing:
 Command for stop emailing:
 ```
