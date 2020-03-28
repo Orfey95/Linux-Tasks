@@ -51,10 +51,10 @@ bash network_checker.sh 2>&1 | tee mail2.txt
 if [ "$os" = "Ubuntu" ]; then
    DEBIAN_FRONTEND=noninteractive apt install -y postfix > /dev/null
    echo "Subject: Logging installer.sh" | cat - mail2.txt | sendmail -t sasha7692@gmail.com
-   rm mail.txt
+   rm mail2.txt
 fi
 # For Centos 7
 if [ "$os" = "Centos" ]; then
    echo "Subject: Logging installer.sh" | cat - mail2.txt | sendmail -t sasha7692@gmail.com
-   rm mail.txt
+   rm mail2.txt
 fi
