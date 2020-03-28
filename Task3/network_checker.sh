@@ -5,7 +5,6 @@
 set -x
 
 # Chech date time
-date
 date | tee mail.txt
 
 # Check operation system
