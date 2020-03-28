@@ -6,6 +6,7 @@ set -x
 
 # Chech date time
 date
+date | tee mail.txt
 
 # Check operation system
 if echo $(hostnamectl | grep "Operating System: ") | grep -q "Ubuntu 18.04"; then
@@ -17,8 +18,21 @@ else
    exit 0
 fi
 
+# Email report 
+# For Ubuntu 18.04
+if [ "$os" = "Ubuntu" ]; then
+   DEBIAN_FRONTEND=noninteractive apt install -y postfix > /dev/null
+   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
+   rm mail.txt
+fi
+# For Centos 7
+if [ "$os" = "Centos" ]; then
+   echo "Subject: Logging network_checker.sh" | cat - mail.txt | sendmail -t sasha7692@gmail.com
+   rm mail.txt
+fi
+
 # Make the file executable
-script_name=$(realpath launcher.sh)
+script_name=$(realpath network_checker.sh)
 chmod +x $script_name
 
 # Add to cron
@@ -81,4 +95,3 @@ elif [ "$os" = "Centos" ]; then
    connection_check_first_try
    connection_check_second_try
 fi
-
