@@ -63,8 +63,6 @@ connection_check_second_try(){
    else
       # Reboot
       echo "No Connection"
-	  echo "Reboot" | tee -a mail.txt
-	  emailing
       reboot
    fi
 }
@@ -75,32 +73,6 @@ if [ "$os" = "Ubuntu" ]; then
    connection_check_second_try
 # If Centos 7
 elif [ "$os" = "Centos" ]; then
-   # Check wget, first try
-   if [ "$(yum list installed | grep wget)" = "" ]; then
-      echo "Try install wget" | tee -a mail.txt
-      yum install -y wget > /dev/null
-   fi
-   # Check wget, second try
-   if [ "$(yum list installed | grep wget)" = "" ]; then
-      echo "Problem witch wget installing. Try install wget again" | tee -a mail.txt
-	  systemctl restart network
-      sleep 1
-      yum install -y wget > /dev/null
-   else
-      echo "Network TRUE" | tee -a mail.txt
-	  emailing
-	  exit 0
-   fi
-   # Check wget, third try
-   if [ "$(yum list installed | grep wget)" = "" ]; then
-      echo "Reboot" | tee -a mail.txt
-	  emailing
-	  reboot
-   else
-      echo "Network TRUE" | tee -a mail.txt
-	  emailing
-	  exit 0
-   fi
    connection_check_first_try
    connection_check_second_try
 fi
