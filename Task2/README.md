@@ -1,49 +1,19 @@
 1) Task was to implement the following policies: <br>
-- user’s password length 8+ characters; <br>
+- user’s password length 8+ characters; 
+- require password changing every 3 months; 
+- it is not allowed to repeat 3 last passwords; 
+- number up case, low case, number digit and special chars; 
+- ask password changing when the 1st user login; 
+- deny executing ‘sudo su -’ and ‘sudo -s’.
+Script for task 1:
 ```
-if ! grep -q "minlen=8" /etc/pam.d/common-password;
-then sudo sed -i 's/pam_unix.so /pam_unix.so minlen=8 /' /etc/pam.d/common-password;
-fi
-```
-- require password changing every 3 months; <br>
-```
-sudo sed -i 's/PASS_MAX_DAYS\s[0-9]\+/PASS_MAX_DAYS\ 90/' /etc/login.defs
-```
-- it is not allowed to repeat 3 last passwords; <br>
-```
-if ! grep -q "use_authtok" /etc/pam.d/common-password;
-then sudo sed -i 's/pam_unix.so /pam_unix.so use_authtok /' /etc/pam.d/common-password;
-fi
-if ! grep -q "password    required    pam_pwhistory.so  remember=3" /etc/pam.d/common-password;
-# What is :a;N;$!ba;
-# Create a label via :a.
-# Append the current and next line to the pattern space via N.
-# If we are before the last line, branch to the created label $!ba ($! means not to do it on the last line as there should be one final newline).
-then sudo sed -i ':a;N;$!ba;s/(the "Primary" block)\n/(the "Primary" block)\npassword    required    pam_pwhistory.so  remember=3\n/' /etc/pam.d/common-password;
-fi
-```
-- number up case, low case, number digit and special chars; <br>
-```
-sudo apt install -y libpam-cracklib
-if ! grep -q "password requisite pam_cracklib.so" /etc/pam.d/common-password;
-then echo "password requisite pam_cracklib.so ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1" | sudo tee -a /etc/pam.d/common-password;
-fi
-```
-- ask password changing when the 1st user login; <br>
-```
-sudo chage -d 0 username
-```
-- deny executing ‘sudo su -’ and ‘sudo -s’; <br>
-```
-if ! sudo cat /etc/sudoers | grep "%sudo" | grep "SU";
-then echo 1
-sudo cat /etc/sudoers > temp_file
-sed -i ':a;N;$!ba;s/Cmnd\salias\sspecification\n/Cmnd alias specification\nCmnd_Alias SU1=\/bin\/su -s\nCmnd_Alias SU2=\/bin\/bash\n/' temp_file
-sed -i "s/sudo   ALL=(ALL:ALL) ALL/sudo   ALL=(ALL:ALL) ALL, \!SU1, \!SU2 /" temp_file;
-cat temp_file | sudo EDITOR='tee' visudo
-fi
+vagrant@EPUAKHAWO13DT11:~$ ./task1.sh newuser newpassword
 ```
 - prevent accidental removal of /var/log/auth.log (Debian) or /var/log/secure (RedHat). 
+```
+# Only sudo (root)
+sudo chattr +a /var/log/auth.log
+```
 ```
 # Not immutable
 sudo chattr +i /var/log/auth.log
