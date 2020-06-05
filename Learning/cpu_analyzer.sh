@@ -3,7 +3,7 @@
 set -e
 
 # Exit codes
-NODE_EXIT=1
+EQUAL_NODE_EXIT=1
 ONE_CPU_EXIT=1
 
 # Variables
@@ -15,7 +15,7 @@ SCHED_NUMA_2="null"
 # If nodes equal -> exit
 cpu_node=$(lscpu -b --parse="NODE" | grep -v "#" | tr ' ' '\n' | uniq -u)
 if [ -z "$cpu_node" ]; then
-  exit $NODE_EXIT
+  exit $EQUAL_NODE_EXIT
 fi
 # If there is only one CPU -> exit
 cpu_counter=$(lscpu -b --parse="CPU" | grep -v "#" | wc -w)
