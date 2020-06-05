@@ -34,8 +34,8 @@ if lscpu | grep -q "Intel"; then
 
   # get repeat cpu by core
   repeat_cpu=""
-  for ((csv_core_array_x=0;csv_core_array_x<$(echo "${#csv_core_array[@]}");csv_core_array_x++)); do
-    for ((csv_core_array_y=$(echo ${csv_core_array_x}+1 | bc);csv_core_array_y<$(echo "${#csv_core_array[@]}");csv_core_array_y++)); do
+  for ((csv_core_array_x=0;csv_core_array_x<${#csv_core_array[@]};csv_core_array_x++)); do
+    for ((csv_core_array_y=$(echo ${csv_core_array_x}+1 | bc);csv_core_array_y<${#csv_core_array[@]};csv_core_array_y++)); do
       if [ ${csv_core_array[$csv_core_array_x]} = ${csv_core_array[$csv_core_array_y]} ]; then
           repeat_cpu="${repeat_cpu} ${csv_core_array_y}"
       fi
@@ -63,7 +63,7 @@ IFS=',' read -ra cpu_node_array <<< "$cpu_node"
 cpu_number=$(lscpu -b --parse="CPU" | grep -v "#" | tr '\r\n' ',')
 IFS=',' read -ra cpu_number_array <<< "$cpu_number"
 
-for ((cpu_node_array_element=0;cpu_node_array_element<$(echo "${#cpu_node_array[@]}");cpu_node_array_element++)); do
+for ((cpu_node_array_element=0;cpu_node_array_element<${#cpu_node_array[@]};cpu_node_array_element++)); do
   if [ ${cpu_node_array[$cpu_node_array_element]} = "0" ]; then
     if [ $SCHED_NUMA_1 = "null" ]; then
       SCHED_NUMA_1=""
