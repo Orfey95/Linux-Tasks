@@ -4,7 +4,7 @@ set -e
 
 # Exit codes
 NODE_EXIT=1
-ONE_CORE_EXIT=1
+ONE_CPU_EXIT=1
 
 # Variables
 MAX_SCHED_WORKERS=""
@@ -20,7 +20,7 @@ fi
 # If there is only one CPU -> exit
 cpu_counter=$(lscpu -b --parse="CPU" | grep -v "#" | wc -w)
 if [ "$cpu_counter" = "1" ]; then
-  exit $ONE_CORE_EXIT
+  exit $ONE_CPU_EXIT
 fi
 #################
 # If CPU model is Intel
